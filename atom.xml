@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-11-06T11:14:48.000Z</updated>
+  <updated>2022-01-09T08:42:00.295Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2021/10/18/MIT%20Course/6.004/Lecture%202.%20The%20Digital%20Abstraction/"/>
     <id>http://example.com/2021/10/18/MIT%20Course/6.004/Lecture%202.%20The%20Digital%20Abstraction/</id>
     <published>2021-10-18T12:30:00.000Z</published>
-    <updated>2021-11-06T11:14:48.000Z</updated>
+    <updated>2022-01-09T08:42:00.295Z</updated>
     
     
     <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
@@ -42,7 +42,7 @@
     <link href="http://example.com/2021/10/10/MIT%20Course/6.004/Lecture%201.%20Basic%20of%20information/"/>
     <id>http://example.com/2021/10/10/MIT%20Course/6.004/Lecture%201.%20Basic%20of%20information/</id>
     <published>2021-10-10T12:30:00.000Z</published>
-    <updated>2021-12-06T17:28:04.702Z</updated>
+    <updated>2022-01-09T08:42:07.184Z</updated>
     
     
     <summary type="html">&lt;p&gt;信息的二进制编码以及最优化编码效率算法&lt;/p&gt;</summary>
