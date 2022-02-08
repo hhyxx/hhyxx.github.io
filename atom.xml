@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-09T08:42:00.295Z</updated>
+  <updated>2022-02-08T04:36:13.268Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -18,43 +18,43 @@
   
   <entry>
     <title>Lecture 2. The Digital Abstraction</title>
-    <link href="http://example.com/2021/10/18/MIT%20Course/6.004/Lecture%202.%20The%20Digital%20Abstraction/"/>
-    <id>http://example.com/2021/10/18/MIT%20Course/6.004/Lecture%202.%20The%20Digital%20Abstraction/</id>
+    <link href="http://example.com/2021/10/18/MIT-Course/6.004/Lecture%202.%20The%20Digital%20Abstraction/"/>
+    <id>http://example.com/2021/10/18/MIT-Course/6.004/Lecture%202.%20The%20Digital%20Abstraction/</id>
     <published>2021-10-18T12:30:00.000Z</published>
-    <updated>2022-01-09T08:42:00.295Z</updated>
+    <updated>2022-02-08T04:36:13.268Z</updated>
     
     
     <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
     
     
     
-    <category term="MIT Course" scheme="http://example.com/categories/MIT-Course/"/>
+    <category term="MIT-Course" scheme="http://example.com/categories/MIT-Course/"/>
     
     <category term="6.004" scheme="http://example.com/categories/MIT-Course/6-004/"/>
     
     
-    <category term="Computation Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
+    <category term="Computation-Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
     
   </entry>
   
   <entry>
     <title>Lecture 1. Basic of information</title>
-    <link href="http://example.com/2021/10/10/MIT%20Course/6.004/Lecture%201.%20Basic%20of%20information/"/>
-    <id>http://example.com/2021/10/10/MIT%20Course/6.004/Lecture%201.%20Basic%20of%20information/</id>
+    <link href="http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/"/>
+    <id>http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/</id>
     <published>2021-10-10T12:30:00.000Z</published>
-    <updated>2022-01-09T08:42:07.184Z</updated>
+    <updated>2022-02-08T04:36:02.849Z</updated>
     
     
     <summary type="html">&lt;p&gt;信息的二进制编码以及最优化编码效率算法&lt;/p&gt;</summary>
     
     
     
-    <category term="MIT Course" scheme="http://example.com/categories/MIT-Course/"/>
+    <category term="MIT-Course" scheme="http://example.com/categories/MIT-Course/"/>
     
     <category term="6.004" scheme="http://example.com/categories/MIT-Course/6-004/"/>
     
     
-    <category term="Computation Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
+    <category term="Computation-Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
     
   </entry>
   
