@@ -39,27 +39,6 @@
   
   <entry>
     <title>Lecture 1. Basic of information</title>
-    <link href="http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/"/>
-    <id>http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/</id>
-    <published>2021-10-10T12:30:00.000Z</published>
-    <updated>2022-02-08T04:36:02.849Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;信息的二进制编码以及最优化编码效率算法&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="MIT-Course" scheme="http://example.com/categories/MIT-Course/"/>
-    
-    <category term="6.004" scheme="http://example.com/categories/MIT-Course/6-004/"/>
-    
-    
-    <category term="Computation-Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Lecture 1. Basic of information</title>
     <link href="http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/"/>
     <id>http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/</id>
     <published>2021-10-10T12:30:00.000Z</published>
@@ -86,6 +65,27 @@
     
     
     <category term="Consensus" scheme="http://example.com/tags/Consensus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 1. Basic of information</title>
+    <link href="http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/"/>
+    <id>http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/</id>
+    <published>2021-10-10T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:02.849Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;信息的二进制编码以及最优化编码效率算法&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://example.com/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://example.com/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
     
   </entry>
   
