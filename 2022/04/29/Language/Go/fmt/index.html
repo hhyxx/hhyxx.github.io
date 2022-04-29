@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>fmt - Hyx&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="Hyx&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hyx&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Go格式化输出符"><meta property="og:type" content="blog"><meta property="og:title" content="fmt"><meta property="og:url" content="http://example.com/2022/04/29/Language/Go/fmt/"><meta property="og:site_name" content="Hyx&#039;s Blog"><meta property="og:description" content="Go格式化输出符"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:published_time" content="2022-04-29T12:30:00.000Z"><meta property="article:modified_time" content="2022-04-29T14:31:26.752Z"><meta property="article:author" content="Hou. Yuxuan"><meta property="article:tag" content="Programming-Language"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2022/04/29/Language/Go/fmt/"},"headline":"fmt","image":["http://example.com/img/og_image.png"],"datePublished":"2022-04-29T12:30:00.000Z","dateModified":"2022-04-29T14:31:26.752Z","author":{"@type":"Person","name":"Hou. Yuxuan"},"publisher":{"@type":"Organization","name":"Hyx's Blog","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"Go格式化输出符"}</script><link rel="canonical" href="http://example.com/2022/04/29/Language/Go/fmt/"><link rel="alternate" href="/atom.xml" title="Hyx&#039;s Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hyx&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-04-29T12:30:00.000Z" title="4/29/2022, 8:30:00 PM">2022-04-29</time>发表</span><span class="level-item"><time dateTime="2022-04-29T14:31:26.752Z" title="4/29/2022, 10:31:26 PM">2022-04-29</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Language/">Language</a><span> / </span><a class="link-muted" href="/categories/Language/Go/">Go</a></span><span class="level-item">1 分钟读完 (大约160个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">fmt</h1><div class="content"><p>Go格式化输出符</p>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>fmt - Hyx&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="Hyx&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hyx&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Go格式化输出符"><meta property="og:type" content="blog"><meta property="og:title" content="fmt"><meta property="og:url" content="http://example.com/2022/04/29/Language/Go/fmt/"><meta property="og:site_name" content="Hyx&#039;s Blog"><meta property="og:description" content="Go格式化输出符"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:published_time" content="2022-04-29T12:30:00.000Z"><meta property="article:modified_time" content="2022-04-29T15:23:31.433Z"><meta property="article:author" content="Hou. Yuxuan"><meta property="article:tag" content="Programming-Language"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2022/04/29/Language/Go/fmt/"},"headline":"fmt","image":["http://example.com/img/og_image.png"],"datePublished":"2022-04-29T12:30:00.000Z","dateModified":"2022-04-29T15:23:31.433Z","author":{"@type":"Person","name":"Hou. Yuxuan"},"publisher":{"@type":"Organization","name":"Hyx's Blog","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"Go格式化输出符"}</script><link rel="canonical" href="http://example.com/2022/04/29/Language/Go/fmt/"><link rel="alternate" href="/atom.xml" title="Hyx&#039;s Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hyx&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-04-29T12:30:00.000Z" title="4/29/2022, 8:30:00 PM">2022-04-29</time>发表</span><span class="level-item"><time dateTime="2022-04-29T15:23:31.433Z" title="4/29/2022, 11:23:31 PM">2022-04-29</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Language/">Language</a><span> / </span><a class="link-muted" href="/categories/Language/Go/">Go</a></span><span class="level-item">5 分钟读完 (大约758个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">fmt</h1><div class="content"><p>Go格式化输出符</p>
 <span id="more"></span>
 
 <h1 id="1-Verb"><a href="#1-Verb" class="headerlink" title="1 Verb"></a>1 Verb</h1><table>
 <thead>
 <tr>
-<th>type</th>
+<th>verb</th>
 <th>explanation</th>
 </tr>
 </thead>
@@ -14,20 +14,32 @@
 <td>int 类型十进制输出</td>
 </tr>
 <tr>
-<td><code>%x</code>, <code>%o</code>, <code>%b</code></td>
-<td>int 类型的十六进制、八进制、二进制输出</td>
+<td><code>%o</code>, <code>%b</code></td>
+<td>int 类型的八进制、二进制输出</td>
 </tr>
 <tr>
-<td><code>%X</code></td>
-<td>大写的十六进制表示</td>
+<td><code>%x</code>, <code>%X</code></td>
+<td>小/大写的十六进制表示</td>
 </tr>
 <tr>
 <td><code>%p</code></td>
-<td>加上前导 0x 的十六进制</td>
+<td>加上前导 0x 的十六进制，常用于指针地址表示</td>
 </tr>
 <tr>
-<td><code>%f</code>, <code>%g</code>, <code>%e</code></td>
-<td>浮点数的单精度、双精度、科学技术法形式的输出</td>
+<td><code>%f</code></td>
+<td>浮点数的单精度、双精度、科学计数法形式的输出</td>
+</tr>
+<tr>
+<td><code>%b</code></td>
+<td>浮点数的二进制科学计数法</td>
+</tr>
+<tr>
+<td><code>%e</code>,  <code>%E</code></td>
+<td>科学计数法小写、大写</td>
+</tr>
+<tr>
+<td><code>%g</code>, <code>%G</code></td>
+<td>根据情况选择 <code>%e</code>、<code>%E</code> 或 <code>%f</code> 以产生更紧凑的（无末尾的0）输出</td>
 </tr>
 <tr>
 <td><code>%t</code></td>
@@ -51,7 +63,15 @@
 </tr>
 <tr>
 <td><code>%v</code></td>
-<td>将任意类型通过易读方式输出</td>
+<td>将任意类型输出默认格式</td>
+</tr>
+<tr>
+<td><code>%+v</code></td>
+<td>在输出结构体时添加字段名</td>
+</tr>
+<tr>
+<td><code>%#v</code></td>
+<td>对应的 Go 语法表示</td>
 </tr>
 <tr>
 <td><code>%T</code></td>
@@ -60,6 +80,126 @@
 <tr>
 <td><code>%%</code></td>
 <td>输出 <code>%</code> 自身</td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td>输入中的占位符</td>
+</tr>
+</tbody></table>
+<h1 id="2-Symbol"><a href="#2-Symbol" class="headerlink" title="2 Symbol"></a>2 Symbol</h1><table>
+<thead>
+<tr>
+<th>symbol</th>
+<th>explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>+</code></td>
+<td>打印数值的正负号</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>打印内容左对其</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>为八进制添加前导0，十六进制添加前导0x，为 <code>%p</code> 去掉前导 0x，对于 <code>%q</code> 在转换成功情况下打印原始字符串，<code>%#U</code> 输出 unicode 编码形式</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>填充前导 0</td>
+</tr>
+</tbody></table>
+<h1 id="3-fmt"><a href="#3-fmt" class="headerlink" title="3 fmt"></a>3 fmt</h1><h2 id="3-1-Input"><a href="#3-1-Input" class="headerlink" title="3.1 Input"></a>3.1 Input</h2><table>
+<thead>
+<tr>
+<th>function</th>
+<th>explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>func Scan(a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>从标准输入读取，将数据空格分割后存入 a，<code>EOF</code> 停止</td>
+</tr>
+<tr>
+<td><code>func Scanln(a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>从标准输入读取，将数据空格分割后存入 a，<code>\n</code> 停止</td>
+</tr>
+<tr>
+<td><code>func Scanf(format string, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>从标准输入读取，根据 <code>format</code> 对数据进行解析，存入 a</td>
+</tr>
+<tr>
+<td><code>func Fscan(r io.Reader, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>同 <code>Scan</code>，从 <code>io.Reader</code> 中读取数据</td>
+</tr>
+<tr>
+<td><code>func Fscanln(r io.Reader, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>同 <code>Scanln</code>，从 <code>io.Reader</code> 中读取数据</td>
+</tr>
+<tr>
+<td><code>func Fscanf(r io.Reader, format string, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>同 <code>Scanf</code>，从 <code>io.Reader</code> 中读取数据</td>
+</tr>
+<tr>
+<td><code>func Sscan(str string, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>同 <code>Scan</code>，从 <code>string</code> 中读取数据</td>
+</tr>
+<tr>
+<td><code>func Sscanln(str string, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>同 <code>Scanln</code>，从 <code>string</code> 中读取数据</td>
+</tr>
+<tr>
+<td><code>func Sscanf(str string, format string, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>同 <code>Scanf</code>，从 <code>string</code> 中读取数据</td>
+</tr>
+</tbody></table>
+<h2 id="3-2-Output"><a href="#3-2-Output" class="headerlink" title="3.2 Output"></a>3.2 Output</h2><table>
+<thead>
+<tr>
+<th>function</th>
+<th>explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>func Print(a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>输出到 <code>os.stdout</code>，非字符串参数之间添加空格</td>
+</tr>
+<tr>
+<td><code>func Println(a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>输出到 <code>os.stdout</code>，输出末尾添加换行符</td>
+</tr>
+<tr>
+<td><code>func Printf(format string, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>输出到 <code>os.stdout</code>，格式化输出</td>
+</tr>
+<tr>
+<td><code>func Fprint(w io.Writer, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>同 <code>Print</code>，输出到 <code>io.Writer</code></td>
+</tr>
+<tr>
+<td><code>func Fprintln(w io.Writer, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>同 <code>Println</code>，输出到 <code>io.Writer</code></td>
+</tr>
+<tr>
+<td><code>func Fprintf(w io.Writer, format string, a ...interface&#123;&#125;) (n int, err error)</code></td>
+<td>同 <code>Printf</code>，输出到 <code>io.Writer</code></td>
+</tr>
+<tr>
+<td><code>func Sprint(a ...interface&#123;&#125;) string</code></td>
+<td>同 <code>Print</code>，将结果以字符串方式返回</td>
+</tr>
+<tr>
+<td><code>func Sprintln(a ...interface&#123;&#125;) string</code></td>
+<td>同 <code>Println</code>，将结果以字符串方式返回</td>
+</tr>
+<tr>
+<td><code>func Sprintf(format string, a ...interface&#123;&#125;) string</code></td>
+<td>同 <code>Printf</code>，将结果以字符串方式返回</td>
+</tr>
+<tr>
+<td><code>func Errorf(format string, a ...interface&#123;&#125;) error</code></td>
+<td>返回 <code>error</code> 类型的结果字符串</td>
 </tr>
 </tbody></table>
 </div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Programming-Language/">Programming-Language</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=61561b8846199d0019177889&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/%E6%94%AF%E4%BB%98%E5%AE%9D.JPG" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/%E5%BE%AE%E4%BF%A1%E8%B5%9E%E8%B5%8F%E7%A0%81.JPG" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/18/MIT-Course/6.004/Lecture%202.%20The%20Digital%20Abstraction/"><span class="level-item">Lecture 2. The Digital Abstraction</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
@@ -78,7 +218,7 @@
             enableHotKey: true,
             language: "zh-CN",
         })
-        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#1-Verb"><span class="level-left"><span class="level-item">1 Verb</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hyx&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Hou. Yuxuan</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/hhyxx"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#1-Verb"><span class="level-left"><span class="level-item">1 Verb</span></span></a></li><li><a class="level is-mobile" href="#2-Symbol"><span class="level-left"><span class="level-item">2 Symbol</span></span></a></li><li><a class="level is-mobile" href="#3-fmt"><span class="level-left"><span class="level-item">3 fmt</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#3-1-Input"><span class="level-left"><span class="level-item">3.1 Input</span></span></a></li><li><a class="level is-mobile" href="#3-2-Output"><span class="level-left"><span class="level-item">3.2 Output</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hyx&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Hou. Yuxuan</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/hhyxx"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
