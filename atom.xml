@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-29T14:26:23.899Z</updated>
+  <updated>2022-04-29T14:31:26.752Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Lecture 1. Basic of information</title>
+    <title>fmt</title>
     <link href="http://example.com/2022/04/29/Language/Go/fmt/"/>
     <id>http://example.com/2022/04/29/Language/Go/fmt/</id>
     <published>2022-04-29T12:30:00.000Z</published>
-    <updated>2022-04-29T14:26:23.899Z</updated>
+    <updated>2022-04-29T14:31:26.752Z</updated>
     
     
     <summary type="html">&lt;p&gt;Go格式化输出符&lt;/p&gt;</summary>
@@ -59,27 +59,6 @@
   </entry>
   
   <entry>
-    <title>Consensus</title>
-    <link href="http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/"/>
-    <id>http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/</id>
-    <published>2021-10-10T12:30:00.000Z</published>
-    <updated>2022-04-29T14:30:09.833Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;$The ~ Basic ~ thory ~ of ~ Distribute ~ Consensus$&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Distribute-System" scheme="http://example.com/categories/Distribute-System/"/>
-    
-    <category term="Consensus-Algorithm" scheme="http://example.com/categories/Distribute-System/Consensus-Algorithm/"/>
-    
-    
-    <category term="Consensus" scheme="http://example.com/tags/Consensus/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Lecture 1. Basic of information</title>
     <link href="http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/"/>
     <id>http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/</id>
@@ -97,6 +76,27 @@
     
     
     <category term="Computation-Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Consensus</title>
+    <link href="http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/"/>
+    <id>http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/</id>
+    <published>2021-10-10T12:30:00.000Z</published>
+    <updated>2022-04-29T14:31:12.241Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;The Basic thory of Distribute Consensus&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Distribute-System" scheme="http://example.com/categories/Distribute-System/"/>
+    
+    <category term="Consensus-Algorithm" scheme="http://example.com/categories/Distribute-System/Consensus-Algorithm/"/>
+    
+    
+    <category term="Consensus" scheme="http://example.com/tags/Consensus/"/>
     
   </entry>
   
