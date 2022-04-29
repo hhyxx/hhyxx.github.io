@@ -38,27 +38,6 @@
   </entry>
   
   <entry>
-    <title>Consensus</title>
-    <link href="http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/"/>
-    <id>http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/</id>
-    <published>2021-10-10T12:30:00.000Z</published>
-    <updated>2022-04-18T05:13:05.813Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;$The&lt;del&gt;Basic&lt;/del&gt;thory&lt;del&gt;of&lt;/del&gt;Distribute~Consensus$&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Distribute-System" scheme="http://example.com/categories/Distribute-System/"/>
-    
-    <category term="Consensus-Algorithm" scheme="http://example.com/categories/Distribute-System/Consensus-Algorithm/"/>
-    
-    
-    <category term="Consensus" scheme="http://example.com/tags/Consensus/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Lecture 1. Basic of information</title>
     <link href="http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/"/>
     <id>http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/</id>
@@ -76,6 +55,27 @@
     
     
     <category term="Computation-Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Consensus</title>
+    <link href="http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/"/>
+    <id>http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/</id>
+    <published>2021-10-10T12:30:00.000Z</published>
+    <updated>2022-04-18T05:13:05.813Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;$The&lt;del&gt;Basic&lt;/del&gt;thory&lt;del&gt;of&lt;/del&gt;Distribute~Consensus$&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Distribute-System" scheme="http://example.com/categories/Distribute-System/"/>
+    
+    <category term="Consensus-Algorithm" scheme="http://example.com/categories/Distribute-System/Consensus-Algorithm/"/>
+    
+    
+    <category term="Consensus" scheme="http://example.com/tags/Consensus/"/>
     
   </entry>
   
