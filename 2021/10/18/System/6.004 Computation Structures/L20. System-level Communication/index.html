@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Lecture 2. The Digital Abstraction - Hyx&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="Hyx&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hyx&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="在物理上如何对信息的编码进行表示"><meta property="og:type" content="blog"><meta property="og:title" content="Lecture 2. The Digital Abstraction"><meta property="og:url" content="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L20.%20System-level%20Communication/"><meta property="og:site_name" content="Hyx&#039;s Blog"><meta property="og:description" content="在物理上如何对信息的编码进行表示"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/20211103114844.png"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-time_seq.png"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Process_block.png"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Process_system.png"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-binary_bound.png"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-three_bound.png"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-combine_device.png"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Noise_ex.png"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Noise_margin.png"><meta property="article:published_time" content="2021-10-18T12:30:00.000Z"><meta property="article:modified_time" content="2022-02-08T04:36:13.268Z"><meta property="article:author" content="Hou. Yuxuan"><meta property="article:tag" content="Computation-Stucture"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/20211103114844.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L20.%20System-level%20Communication/"},"headline":"Lecture 2. The Digital Abstraction","image":["https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/20211103114844.png","https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-time_seq.png","https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Process_block.png","https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Process_system.png","https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-binary_bound.png","https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-three_bound.png","https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-combine_device.png","https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Noise_ex.png","https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Noise_margin.png"],"datePublished":"2021-10-18T12:30:00.000Z","dateModified":"2022-02-08T04:36:13.268Z","author":{"@type":"Person","name":"Hou. Yuxuan"},"publisher":{"@type":"Organization","name":"Hyx's Blog","logo":{"@type":"ImageObject","url":"http://119.91.233.188/img/logo.svg"}},"description":"在物理上如何对信息的编码进行表示"}</script><link rel="canonical" href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L20.%20System-level%20Communication/"><link rel="alternate" href="/atom.xml" title="Hyx&#039;s Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hyx&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-18T12:30:00.000Z" title="10/18/2021, 8:30:00 PM">2021-10-18</time>发表</span><span class="level-item"><time dateTime="2022-02-08T04:36:13.268Z" title="2/8/2022, 12:36:13 PM">2022-02-08</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/MIT-Course/">MIT-Course</a><span> / </span><a class="link-muted" href="/categories/MIT-Course/6-004/">6.004</a></span><span class="level-item">7 分钟读完 (大约1077个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Lecture 2. The Digital Abstraction</h1><div class="content"><p>在物理上如何对信息的编码进行表示</p>
+<span id="more"></span>
+
+<h1 id="1-Voltage-Representing"><a href="#1-Voltage-Representing" class="headerlink" title="1 Voltage Representing"></a>1 Voltage Representing</h1><h2 id="1-1-Encode-a-Picture"><a href="#1-1-Encode-a-Picture" class="headerlink" title="1.1 Encode a Picture"></a>1.1 Encode a Picture</h2><div align="center"><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/20211103114844.png" style="zoom:50%;" /></div>
+
+<p>按照时间以及提前确定的扫描网格顺序，例如上图从左$\rightarrow$右对图像进行扫描，扫描得到的随时间变化的电压图如下</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-time_seq.png" style="zoom:50%;" /></div>
+
+<p>其中+1V表示白色，0V表示黑色，(0,1)间的电压值表示灰度值。其中图片的特定位置映射到序列上的某个点</p>
+<div align="center"><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Process_block.png" style="zoom:50%;" /></div>
+
+<p>对于这样的灰度图像最基本的处理结构块是复制和反转，其中反转只需进行 1 - v 就能得到其相反的值</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Process_system.png" style="zoom:50%;" />
+</div>
+
+<p>上面的这个基于copy和invert的经过偶数次的反转，系统理论上得到的输出结果应该是与原图像完全一致，但是实际的输出变得模糊平滑</p>
+<p>噪声导致了结果的不准确，经过的处理块越多，噪声对于结果的影响也会相应叠加，系统设计的目标则是在错误产生后并作为输入传入下一个处理块前尽可能的将其恢复。</p>
+<h2 id="1-2-Digital-Abstraction"><a href="#1-2-Digital-Abstraction" class="headerlink" title="1.2 Digital Abstraction"></a>1.2 Digital Abstraction</h2><div align="center">
+  <img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-binary_bound.png" style="zoom:50%;" />
+</div>
+
+<p>对于0/1编码问题，如果将 [0,1] 区间的电压值进行编码，将整个区间一分为2，界定一个边界 $V_{TH}$，其中</p>
+<ul>
+<li>$\geq V_{TH}$ 的电压值认定为1</li>
+<li>$&lt;V_{TH}$ 的电压值认定为0</li>
+</ul>
+<p>那么在一个十分微小的偏移量 $\mathcal{E}$ 的区间 $[V_{TH}-\mathcal{E},V_{TH}+\mathcal{E}]$ 中，使用真实设备检测这个边界条件耗时且价格昂贵，所以不可取</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-three_bound.png" style="zoom:50%;" />
+</div>
+
+<p>上面这种情况界定了两个边界，$V_L,V_H$，其中，</p>
+<ul>
+<li>$\leq V_L$ 的电压值认定是 0</li>
+<li>$\geq V_H$ 的电压值认定为 1</li>
+<li>$(V_L,V_H)$ 之间的电压值是屏蔽区域</li>
+</ul>
+<p>采用这种划分方式可以使用一个禁止区域内，使用一个放大器和屏蔽区的参考电压，参考电压不必十分精确，参考电压也可以根据温度不同而变化，只需要保证在划分的区域内能够正常分辨即可</p>
+<h2 id="1-3-Combinational-Digital-System"><a href="#1-3-Combinational-Digital-System" class="headerlink" title="1.3 Combinational Digital System"></a>1.3 Combinational Digital System</h2><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-combine_device.png" style="zoom:80%;" />
+
+<p>combinational device 需要满足以下规范</p>
+<ul>
+<li>信号输入，即转换器将电压值转换为数字化结果</li>
+<li>信号输出，将数字化结果转化为电压值</li>
+<li>能够满足将一个设备的输出作为输入传入另一个设备</li>
+<li>功能规范，即定义数字值和电压值的转换关系</li>
+<li>时序规范，即预计的处理时间</li>
+</ul>
+<p>在上图中，输入总共有 $2\times 2\times 2$ 种，所以转换器需要将其变为 001 ～111 的编码形式，</p>
+<p>如果要将几个小的combinational device 进行整合形成 system，需满足以下组成规则</p>
+<ul>
+<li>系统的每个 component 都是一个 combinational device</li>
+<li>每个 component 的 input  是系统的输入或者是其它 component 的 output</li>
+<li>系统中不存在环路</li>
+</ul>
+<h1 id="2-Noise"><a href="#2-Noise" class="headerlink" title="2 Noise"></a>2 Noise</h1><h2 id="2-1-Generation"><a href="#2-1-Generation" class="headerlink" title="2.1 Generation"></a>2.1 Generation</h2><div align="center">
+<img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Noise_ex.png" style="zoom:50%;" />  
+</div>
+
+<p>例如在两个 device 间一个的 output 作为另一个的 input ，output 的产生值是 $V_L-\mathcal{E}$，在传输的电缆中，因为噪声接收的 device 收到的信号值是 $V_L+\mathcal{E}$，是在 Forbidden 区域的，所以无法进行处理，因此在构建的系统中应该有相应的策略方法来避免噪声在信号传输中的影响</p>
+<p>噪声的产生主要有以下几种原因</p>
+<ul>
+<li>电气特性决定，根据欧姆定律，IR 变化会导致电压变化</li>
+<li>device 的组件参数和其标称值的微小差异引起</li>
+<li>来自外部电磁场的热噪声或者电压效应</li>
+</ul>
+<p>device 的组成材料也会有相应的影响，这是不可避免的，好的解决方法是预测噪声可能产生偏差值，然后对其进行矫正</p>
+<h2 id="2-2-Noise-Margin"><a href="#2-2-Noise-Margin" class="headerlink" title="2.2 Noise Margin"></a>2.2 Noise Margin</h2><div align="center">
+  <img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L2-Noise_margin.png" style="zoom:60%;" />
+</div>
+
+<p>一个好的解决方法是在输入端与输出端建立不同的规范，</p>
+<ul>
+<li>digital output: “0” $\leq V_{OL}$, “1” $\geq V_{OH}$ </li>
+<li>digital input: “0” $\leq V_{IL}$, “1” $\geq V_{IH}$ </li>
+<li>$V_{OL}&lt;V_{IL}&lt;V_{IH}&lt;V_{OH}$</li>
+</ul>
+<p>通过在输出端两个边界加入一定的 margin，其中大小关系如上面的列表所示，左 margin 和右 margin 的大小不一定完全一致，其中较小的大小即这个 system 的抗噪能力</p>
+<p>采用上述方法能够在噪声产生的影响逐渐积累前就将其消除，避免了因错误而产生的错误</p>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Computation-Stucture/">Computation-Stucture</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=61561b8846199d0019177889&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/%E6%94%AF%E4%BB%98%E5%AE%9D.JPG" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/%E5%BE%AE%E4%BF%A1%E8%B5%9E%E8%B5%8F%E7%A0%81.JPG" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/10/18/System/6.004%20Computation%20Structures/L18.%20Devices%20&amp;%20Interrupts/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Lecture 2. The Digital Abstraction</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/18/System/6.004%20Computation%20Structures/L21.%20Parallel%20Processing/"><span class="level-item">Lecture 2. The Digital Abstraction</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "b717e9a91521ccee6d498a53589151f6",
+            repo: "hhyxx.github.io",
+            owner: "hhyxx",
+            clientID: "75c6a5d8d3db17be431b",
+            clientSecret: "dab1e8a87580588a26998d0adb5a01da5956dea4",
+            admin: ["hhyxx"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#1-Voltage-Representing"><span class="level-left"><span class="level-item">1 Voltage Representing</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-1-Encode-a-Picture"><span class="level-left"><span class="level-item">1.1 Encode a Picture</span></span></a></li><li><a class="level is-mobile" href="#1-2-Digital-Abstraction"><span class="level-left"><span class="level-item">1.2 Digital Abstraction</span></span></a></li><li><a class="level is-mobile" href="#1-3-Combinational-Digital-System"><span class="level-left"><span class="level-item">1.3 Combinational Digital System</span></span></a></li></ul></li><li><a class="level is-mobile" href="#2-Noise"><span class="level-left"><span class="level-item">2 Noise</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-1-Generation"><span class="level-left"><span class="level-item">2.1 Generation</span></span></a></li><li><a class="level is-mobile" href="#2-2-Noise-Margin"><span class="level-left"><span class="level-item">2.2 Noise Margin</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hyx&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Hou. Yuxuan</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/hhyxx"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

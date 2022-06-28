@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Hyx&#39;s Blog</title>
-  <icon>http://example.com/icon.png</icon>
+  <icon>http://119.91.233.188/icon.png</icon>
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://119.91.233.188/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
-  <updated>2022-04-29T15:29:20.249Z</updated>
-  <id>http://example.com/</id>
+  <link href="http://119.91.233.188/"/>
+  <updated>2022-06-28T13:41:09.768Z</updated>
+  <id>http://119.91.233.188/</id>
   
   <author>
     <name>Hou. Yuxuan</name>
@@ -17,9 +17,51 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>first-post</title>
+    <link href="http://119.91.233.188/2022/06/28/first-post/"/>
+    <id>http://119.91.233.188/2022/06/28/first-post/</id>
+    <published>2022-06-28T13:41:09.000Z</published>
+    <updated>2022-06-28T13:41:09.768Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;test&quot;&gt;&lt;a href=&quot;#test&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>L1. Basics of information</title>
+    <link href="http://119.91.233.188/2022/06/10/System/6.004%20Computation%20Structures/L01.%20Basics%20of%20information/"/>
+    <id>http://119.91.233.188/2022/06/10/System/6.004%20Computation%20Structures/L01.%20Basics%20of%20information/</id>
+    <published>2022-06-10T12:30:00.000Z</published>
+    <updated>2022-06-27T17:29:54.196Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;How to quantify infomation’s uncertainty and choose the encode method.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="System" scheme="http://119.91.233.188/categories/System/"/>
+    
+    <category term="6.004 Computation Stucture" scheme="http://119.91.233.188/categories/System/6-004-Computation-Stucture/"/>
+    
+    
+    <category term="Computation Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
     <title>fmt</title>
-    <link href="http://example.com/2022/04/29/Language/Go/fmt/"/>
-    <id>http://example.com/2022/04/29/Language/Go/fmt/</id>
+    <link href="http://119.91.233.188/2022/04/29/Language/Go/fmt/"/>
+    <id>http://119.91.233.188/2022/04/29/Language/Go/fmt/</id>
     <published>2022-04-29T12:30:00.000Z</published>
     <updated>2022-04-29T15:29:20.249Z</updated>
     
@@ -28,19 +70,40 @@
     
     
     
-    <category term="Language" scheme="http://example.com/categories/Language/"/>
+    <category term="Language" scheme="http://119.91.233.188/categories/Language/"/>
     
-    <category term="Go" scheme="http://example.com/categories/Language/Go/"/>
+    <category term="Go" scheme="http://119.91.233.188/categories/Language/Go/"/>
     
     
-    <category term="Programming-Language" scheme="http://example.com/tags/Programming-Language/"/>
+    <category term="Programming-Language" scheme="http://119.91.233.188/tags/Programming-Language/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>L2. The digital abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L02.%20The%20digital%20abstraction/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L02.%20The%20digital%20abstraction/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-06-28T12:35:50.740Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;How to use digital to show the encode result.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="System" scheme="http://119.91.233.188/categories/System/"/>
+    
+    <category term="6.004 Computation Stucture" scheme="http://119.91.233.188/categories/System/6-004-Computation-Stucture/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
     
   </entry>
   
   <entry>
     <title>Lecture 2. The Digital Abstraction</title>
-    <link href="http://example.com/2021/10/18/MIT-Course/6.004/Lecture%202.%20The%20Digital%20Abstraction/"/>
-    <id>http://example.com/2021/10/18/MIT-Course/6.004/Lecture%202.%20The%20Digital%20Abstraction/</id>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L06.%20Finite%20State%20Machines/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L06.%20Finite%20State%20Machines/</id>
     <published>2021-10-18T12:30:00.000Z</published>
     <updated>2022-02-08T04:36:13.268Z</updated>
     
@@ -49,54 +112,327 @@
     
     
     
-    <category term="MIT-Course" scheme="http://example.com/categories/MIT-Course/"/>
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
     
-    <category term="6.004" scheme="http://example.com/categories/MIT-Course/6-004/"/>
-    
-    
-    <category term="Computation-Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Consensus</title>
-    <link href="http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/"/>
-    <id>http://example.com/2021/10/10/Ditribute-System/Consesus-algorithm/Core/</id>
-    <published>2021-10-10T12:30:00.000Z</published>
-    <updated>2022-04-29T14:31:12.241Z</updated>
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
     
     
-    <summary type="html">&lt;p&gt;The Basic thory of Distribute Consensus&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Distribute-System" scheme="http://example.com/categories/Distribute-System/"/>
-    
-    <category term="Consensus-Algorithm" scheme="http://example.com/categories/Distribute-System/Consensus-Algorithm/"/>
-    
-    
-    <category term="Consensus" scheme="http://example.com/tags/Consensus/"/>
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
     
   </entry>
   
   <entry>
-    <title>Lecture 1. Basic of information</title>
-    <link href="http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/"/>
-    <id>http://example.com/2021/10/10/MIT-Course/6.004/Lecture%201.%20Basic%20of%20information/</id>
-    <published>2021-10-10T12:30:00.000Z</published>
-    <updated>2022-02-08T04:36:02.849Z</updated>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L07.%20Performance%20Measures/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L07.%20Performance%20Measures/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
     
     
-    <summary type="html">&lt;p&gt;信息的二进制编码以及最优化编码效率算法&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
     
     
     
-    <category term="MIT-Course" scheme="http://example.com/categories/MIT-Course/"/>
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
     
-    <category term="6.004" scheme="http://example.com/categories/MIT-Course/6-004/"/>
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
     
     
-    <category term="Computation-Stucture" scheme="http://example.com/tags/Computation-Stucture/"/>
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L08.%20Design%20Tradeoffs/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L08.%20Design%20Tradeoffs/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L03.%20CMOS%20Technology/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L03.%20CMOS%20Technology/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L05.%20Sequential%20Logic/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L05.%20Sequential%20Logic/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L04.%20Combinational%20Logic/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L04.%20Combinational%20Logic/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L11.%20Compilers/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L11.%20Compilers/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L09.%20Instruction%20Set%20Architectures/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L09.%20Instruction%20Set%20Architectures/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L10b.%20Models%20of%20Computation/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L10b.%20Models%20of%20Computation/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L12.%20Procedures%20&amp;%20Stacks/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L12.%20Procedures%20&amp;%20Stacks/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L13.%20Building%20the%20Beta/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L13.%20Building%20the%20Beta/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L14.%20The%20Memory%20Hierarchy/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L14.%20The%20Memory%20Hierarchy/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L15.%20Pipelining%20the%20Beta/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L15.%20Pipelining%20the%20Beta/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L10a.%20Assembly%20Language/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L10a.%20Assembly%20Language/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L17.%20Virtualizcing%20the%20Processor/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L17.%20Virtualizcing%20the%20Processor/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lecture 2. The Digital Abstraction</title>
+    <link href="http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L16.%20Virtual%20Memory/"/>
+    <id>http://119.91.233.188/2021/10/18/System/6.004%20Computation%20Structures/L16.%20Virtual%20Memory/</id>
+    <published>2021-10-18T12:30:00.000Z</published>
+    <updated>2022-02-08T04:36:13.268Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在物理上如何对信息的编码进行表示&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="MIT-Course" scheme="http://119.91.233.188/categories/MIT-Course/"/>
+    
+    <category term="6.004" scheme="http://119.91.233.188/categories/MIT-Course/6-004/"/>
+    
+    
+    <category term="Computation-Stucture" scheme="http://119.91.233.188/tags/Computation-Stucture/"/>
     
   </entry>
   

@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>L1. Basics of information - Hyx&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="Hyx&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hyx&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="How to quantify infomation’s uncertainty and choose the encode method."><meta property="og:type" content="blog"><meta property="og:title" content="L1. Basics of information"><meta property="og:url" content="http://119.91.233.188/2022/06/10/System/6.004%20Computation%20Structures/L01.%20Basics%20of%20information/"><meta property="og:site_name" content="Hyx&#039;s Blog"><meta property="og:description" content="How to quantify infomation’s uncertainty and choose the encode method."><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-entropy_meaning"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-encode_tree"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-fix_length_encode"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-ASCII"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-hexademical"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-Signed_integers"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-two"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-var_leng_encoding"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-huffman_tree"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-hamming_distance"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-single_bit_error"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-parity_check"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-multi_errors"><meta property="og:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-single_bit_correct"><meta property="article:published_time" content="2022-06-10T12:30:00.000Z"><meta property="article:modified_time" content="2022-06-27T17:29:54.196Z"><meta property="article:author" content="Hou. Yuxuan"><meta property="article:tag" content="Computation Stucture"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-entropy_meaning"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://119.91.233.188/2022/06/10/System/6.004%20Computation%20Structures/L01.%20Basics%20of%20information/"},"headline":"L1. Basics of information","image":[],"datePublished":"2022-06-10T12:30:00.000Z","dateModified":"2022-06-27T17:29:54.196Z","author":{"@type":"Person","name":"Hou. Yuxuan"},"publisher":{"@type":"Organization","name":"Hyx's Blog","logo":{"@type":"ImageObject","url":"http://119.91.233.188/img/logo.svg"}},"description":"How to quantify infomation’s uncertainty and choose the encode method."}</script><link rel="canonical" href="http://119.91.233.188/2022/06/10/System/6.004%20Computation%20Structures/L01.%20Basics%20of%20information/"><link rel="alternate" href="/atom.xml" title="Hyx&#039;s Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hyx&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-06-10T12:30:00.000Z" title="6/10/2022, 8:30:00 PM">2022-06-10</time>发表</span><span class="level-item"><time dateTime="2022-06-27T17:29:54.196Z" title="6/28/2022, 1:29:54 AM">2022-06-28</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/System/">System</a><span> / </span><a class="link-muted" href="/categories/System/6-004-Computation-Stucture/">6.004 Computation Stucture</a></span><span class="level-item">30 分钟读完 (大约4466个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">L1. Basics of information</h1><div class="content"><p>How to quantify infomation’s uncertainty and choose the encode method.</p>
+<span id="more"></span>
+
+<h1 id="1-Information-resolves-uncertainty"><a href="#1-Information-resolves-uncertainty" class="headerlink" title="1 Information resolves uncertainty"></a>1 Information resolves uncertainty</h1><h2 id="1-1-Quantifying-information"><a href="#1-1-Quantifying-information" class="headerlink" title="1.1 Quantifying information"></a>1.1 Quantifying information</h2><p>对于包含 $0/1$ 事件的信息，每个结果的概率都是 $1/2$，那么只需要 $1~bit$  的二进制位就能将 $0/1$ 两种情况表示出来。对于类似的概率事件，香农提出一个量化模型来计算一个信息的不确定性：</p>
+<p>$$<br>I(x_i)= log_{2}\left( \frac{1}{p_i}\right)<br>$$</p>
+<p>对于 $0/1$ 事件就需要 $log_2(2) = 1~bit$ 进行编码。类似的，对于一副扑克牌，共有 $54$ 张牌，除去大小王，每一张被选到的概率都是 $1/52$。对于以下四类事件计算编码 $bit$ 数</p>
+<ul>
+<li>$a~heart$</li>
+<li>$not<del>the</del>Ace<del>of</del>spades$</li>
+<li>$a<del>face</del>card ( J、Q、K )$</li>
+<li>$the<del>“suicide</del>king”$</li>
+</ul>
+<p>代入公式计算上面四个事件编码所需要的 $bit$ 如下</p>
+<table>
+<thead>
+<tr>
+<th align="center">$data$</th>
+<th align="center">$P_{data}$</th>
+<th align="center">$log_2(1/p_{data})$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$a~heart$</td>
+<td align="center">$13/52$</td>
+<td align="center">$2~bits$</td>
+</tr>
+<tr>
+<td align="center">$not<del>the</del>Ace<del>of</del>spades$</td>
+<td align="center">$51/52$</td>
+<td align="center">$0.028~bits$</td>
+</tr>
+<tr>
+<td align="center">$a<del>face</del>card ( J、Q、K )$</td>
+<td align="center">$12/52$</td>
+<td align="center">$2.115~bits$</td>
+</tr>
+<tr>
+<td align="center">$the<del>“suicide</del>king”$</td>
+<td align="center">$1/52$</td>
+<td align="center">$5.7~bits$</td>
+</tr>
+</tbody></table>
+<p>也就是说，一个事件发生的概率越小，不确定性就越大，$encode$ 其可能产生的信息需要的 $bit$  就越多。</p>
+<p>对于 $N$ 个等概率事件，每个事件的概率是 $1/N$，结果的数量减为 $M$，则收到这样信息的概率为 $M(1/N)$，计算如下<br>$$<br>\text{I(N choices} \rightarrow \text{M choices)} = log_2 \left( \frac{1}{M(1/N)} \right) = log_2 \left( \frac{N}{M} \right) ~ \text{bits}<br>$$<br>对于硬币投掷问题，正面和反面概率都是 $1/2$，结果只能是正面或者反面一种，所以结果就由 $2\rightarrow 1$ ，计算得到：<br>$$<br>\text{I} = log_2(\frac{2}{1}) = 1 ~ \text{bit}<br>$$<br>在投掷两个骰子中，每个骰子有 $6$ 个可能的结果，根据乘法原理计算得两个骰子结合可能有 $36$ 个不同的结果，结果由 $36\rightarrow 1$ ,得到需要的二进制位结果如下<br>$$<br>I=log_2(\frac{36}{1})=5.17~ \text{bits}<br>$$<br>在 $digit<del>system$ 中，只能处理整数个 $bit$ ，使用上取整进行处理，$5.17</del>bits $ 就使用 $6<del>bits$  进行编码，而对于 $10$ 个连续的这样的事件，只需要 $52</del>bits$。</p>
+<h2 id="1-2-Entropy"><a href="#1-2-Entropy" class="headerlink" title="1.2 Entropy"></a>1.2 Entropy</h2><p>通过对不确定性的量化，数值上可以直观看到不确定性越大所携带的信息就越多，$entropy$ （熵）可以很好的用来对编码效率进行评估。</p>
+<p>在信息论中，$entropy<del>H(X)$ 表示一个接收到的信息 $X$ 包含的信息的平均量，计算公式如下：<br>$$<br>\text{H(X) = E(I(X)) }= \sum_{i=1}^{N}p_i\cdot log_2\left(\frac{1}{p_i}\right)</del>\text{bits}<br>$$<br>对于一个有 $N$ 个随机变量的信息集合 $\mathrm{X}={\mathrm{A}, \mathrm{B}, \mathrm{C}, \mathrm{D}}$，每个事件概率是  $p_i$，对应可以计算得到 $encode$ 所需的 $bits$ 如下表</p>
+<table>
+<thead>
+<tr>
+<th align="center">$choice_i$</th>
+<th align="left">$p_i$</th>
+<th align="left">$log_2(1/p_i)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$”A”$</td>
+<td align="left">$1/3$</td>
+<td align="left">$1.58~bits$</td>
+</tr>
+<tr>
+<td align="center">$”B”$</td>
+<td align="left">$1/2$</td>
+<td align="left">$1~bit$</td>
+</tr>
+<tr>
+<td align="center">$”C”$</td>
+<td align="left">$1/12$</td>
+<td align="left">$3.58~bits$</td>
+</tr>
+<tr>
+<td align="center">$”D”$</td>
+<td align="left">$1/12$</td>
+<td align="left">$3.58~bits$</td>
+</tr>
+</tbody></table>
+<p>那么对这个信息集合进行编码需要的最少 $bits$ 数可以根据熵计算得到如下<br>$$<br>\begin{align}<br>H(X)&amp;=(1/3)(1.58)+(1/2)(1)+2(1/12)(3.58)<br>\newline<br>&amp;=1.626 ~\text{bits}<br>\end{align}<br>$$<br>这个计算得到的结果是理论上 $encode$ 所需要的最少 $bits$，在实际中，应当尽量将编码算法向这一理想值靠近。</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-entropy_meaning" style="zoom:50%;" /></div>
+
+<p>对于一个数据序列 $X$ 描述随机变量信息，如果通过熵计算得到的值为 $H(X)$，那么如果使用少于 $H(X)$ 的 $bits$ 进行编码，那么信息的传输将是不完整的，所以 $entropy$ 是编码进行信息传递所需 $bits$ 的下界。如果编码需要的 $bits$ 比 $H(X)$ 多很多，那么将会浪费资源。</p>
+<h1 id="2-Encodings"><a href="#2-Encodings" class="headerlink" title="2 Encodings"></a>2 Encodings</h1><h2 id="2-1-Conflict"><a href="#2-1-Conflict" class="headerlink" title="2.1 Conflict"></a>2.1 Conflict</h2><p>编码就是一个不冲突的映射方式，能够将信息映射为方便存储传输的形式，再无差错的将信息通过解码方式获取原信息，在计算机中就是将信息编码为一个 $bit$ 字符串，下面是三种不同的将包含四种字符 ${A,B,C,D}$ 的信息进行编码方式：</p>
+<table>
+<thead>
+<tr>
+<th align="center">$A$</th>
+<th align="center">$B$</th>
+<th align="center">$C$</th>
+<th align="center">$D$</th>
+<th align="center">$Encoding<del>for</del>“ABBA”$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$00$</td>
+<td align="center">$01$</td>
+<td align="center">$10$</td>
+<td align="center">$11$</td>
+<td align="center">$00010100$</td>
+</tr>
+<tr>
+<td align="center">$01$</td>
+<td align="center">$1$</td>
+<td align="center">$000$</td>
+<td align="center">$001$</td>
+<td align="center">$011101$</td>
+</tr>
+<tr>
+<td align="center">$0$</td>
+<td align="center">$1$</td>
+<td align="center">$10$</td>
+<td align="center">$11$</td>
+<td align="center">$0110$</td>
+</tr>
+</tbody></table>
+<ul>
+<li>第一种是定长编码，信息之间不会发生冲突，能够无差错进行映射和还原</li>
+<li>第二种是变长编码，经过设计后能够实现无差错，并且编码效率比定长的要高</li>
+<li>第三种变长编码，对于$ “ABBA”,<del>“ADA”,</del>“ABC”$ 编码后的二进制串都为 $0110$ 会产生冲突，无法还原</li>
+</ul>
+<p>在编码时不光要考虑是否效率，还要保证无差错。</p>
+<h2 id="2-2-Encoding-as-binary-trees"><a href="#2-2-Encoding-as-binary-trees" class="headerlink" title="2.2 Encoding as binary trees"></a>2.2 Encoding as binary trees</h2><p>二进制编码可以用二叉树进行可视化，边分别表示 $0,1$，每个叶子结点表示一个 $symbol$，进行可视化后，如果树的内部节点没有表示 $symbol$，并且叶节点上表示的  $symbol$ 也没有重复就说明此编码方式是一个有效编码</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-encode_tree" style="zoom:50%;" /></div>
+
+<p>如上图，$symbol<del>“B”$ 沿着表示 $0$ 的边到树根的距离是 $1$，同样，$”A”$  的距离是 $2$，$”C”</del>,”D”$ 的距离是 $3$</p>
+<p>如果收到一个 $encoding$ 过的信息 $”01111”$，根据 $encode$ 的规则可以进行 $decode$，过程如下：</p>
+<ul>
+<li>从根走 $”0”$ 边，到达表示 $”B”$ 的叶子结点，$decode$ 出 $symbol~”B”$ </li>
+<li>然后根据路径 “$1 \rightarrow 1$” ，$decode$ 出 $”A”$</li>
+<li>最后根据路径 “$1 \rightarrow 1$”，$decode$ 出第二个 $”A”$</li>
+</ul>
+<p>最后 $”BAA”$ 就是我们根据编码规则解码出传递的原始信息</p>
+<h2 id="2-3-fixed-length-encodes"><a href="#2-3-fixed-length-encodes" class="headerlink" title="2.3 fixed length encodes"></a>2.3 fixed length encodes</h2><p>如果要编码的信息是等概率事件，那么使用 $fixed<del>length</del>encode$ 会比较适合，对应的二叉树是一颗完全二叉树，所有叶节点到跟节点的距离相等，其最大的优点就是==支持随机访问==，可以通过跳过相应的位数来获得对应位置上的信息</p>
+<p>对于 $N$ 个等概率事件的熵，代入可以得到简化为以下形式：<br>$$<br>\sum_{i=1}^{N}(1/N)\cdot log_2(N) = log_2(N)<br>$$</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-fix_length_encode" style="zoom:50%; align:center" /></div>
+
+<p>上图就是等概率事件编码的完全二叉树形式</p>
+<p>在用二进制表示十进制数字时，一共有 $10$ 个不同的符号，对每个符号进行单独的编码，每个符号的概率相同，计算得到 $log_2(10)=3.322 <del>\text{bits}$，我们使用 $4$ 个 $bits$ 对其进行编码，如果是 $1000$ 位的 $10$ 进制数字，则需要使用 $4000</del>bits$ ，通过熵公式计算得到的理论下界则为 $3322~bits$，所以并不是一个十分高效的编码方式。</p>
+<p>$ASCII$ 是一个用于编码英文文本的编码系统，$ASCII$ 一共有 $94$ 个不同的字符，每个字符的概率相同，所以其熵为 $H(X)=log_2(94) = 6.555 ~ \text{bits}$，所以需要固定长度为 $7~bits$ 的编码系统来编码每个字符。</p>
+<h2 id="2-4-Encode-for-different-radix"><a href="#2-4-Encode-for-different-radix" class="headerlink" title="2.4 Encode for different radix"></a>2.4 Encode for different radix</h2><p><strong>1 )  Integers</strong></p>
+<p>对于正整数，可以直接使用二进制串来表示，左为高位，依次是不同的 $2$ 的整数幂。</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-ASCII" style="zoom:50%; align:center" /></div>
+
+<p>如上图就是一个使用二进制串表示的正整数，根据二进制串得到数字的十进制表示计算方式如下：<br>$$<br>v=\sum_{i=0}^{N-1} 2^{i} b_{i}<br>$$<br>对于图中表示的数字，计算过程如下：<br>$$<br>\begin{aligned} V &amp;=0 \cdot 2^{11}+1\cdot 2^{10}+1\cdot 2^{9}+\ldots \ &amp;=1024+512+256+128+64+16 \ &amp;=2000 \end{aligned}<br>$$<br>对于用 $\mathrm{N}$ 位二进制表示正整数的数字范围是 $[0,2^{\mathrm{N}-1}]$</p>
+<p><strong>2 ) Hexadecimal Notation</strong></p>
+<p>使用 $1$ 个十六进制位可以表示 $4$ 个二进制位，对于 $\text{hexademical}$ (十六进制) 数字，分别使用 $16$ 个字符表示 $[0,15]$ 之间的数，与二进制数字对应的关系如下表：<br>$$<br>\begin{array}{ll}0000-0 &amp; 1000-8<br>\newline 0001-1 &amp; 1001-9<br>\newline 0010-2 &amp; 1010-A<br>\newline 0011-3 &amp; 1011-B<br>\newline 0100-4 &amp; 1100-C<br>\newline 0101-5 &amp; 1101-D<br>\newline 0110-6 &amp; 1110-E<br>\newline 0111-7 &amp; 1111-F<br>\end{array}<br>$$<br>那么对于上面的数字用 $16$ 进制进行表示如下</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-hexademical" style="zoom:40%; align:center;" /></div>
+
+<p>$0x$ 开头表示 $16$ 进制数字，上面的数字表示为 $\text{0x7D0}$，长的二进制串很冗杂且易出错，所以用 $16$ 进制表示数字可以提高效率。</p>
+<p><strong>3 ) Signed Integers</strong></p>
+<p>在二进制中最高位是用作符号位，其中 $0$ 表示正数， $1$ 表示负数:</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-Signed_integers" style="zoom:40%; align:center;" /></div>
+
+<ul>
+<li>除去符号位，表示数字的位置共有 $N-1$ 位，所代表的数字范围是 $[-2^{N-1}-1,~2^{N-1}-1]$</li>
+</ul>
+<p>使用符号位表示数字会变得复杂，出现 $+0$ 和 $-0$ 的情况，例如 $000,100$ 存在冗余情况，编码不够高效。更重要的是在数字电路中符号数字的加法和减法的电路是不同的。</p>
+<p><strong>4 ) Two’s Complement Encoding</strong></p>
+<p>在补码中，最高位的数字表示的是一个负数，例如在 $N~bits$ 的串中，最高位表示的是 $-2^{N-1}$ ，其余的 $N-1$ 位依旧表示的是正数，最高位表示的负数和正数位上的数字求和即当前串编码代表的数字。例如全 $1$ 串则表示 $-2^{N-1}+(2^{N-1}-1)=-1$，其中 $0$ 只有全 $0$ 串才会表示，不存在 $+0, -0$ 问题</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-two's_complement_encoding" style="zoom:50%;" /></div>
+
+<ul>
+<li>下界为 $10\dots 0000$即 $-2^{N-1}$</li>
+<li>上界为 $01\dots1111$ 即 $+2^{N-1}-1$</li>
+<li>全 $1$ 串 $11\dots1111$ 即 $-1$</li>
+<li>全 $0$ 串 $00\dots0000$ 即 $0$</li>
+</ul>
+<p>在补码系统中进行加法时，例如表示 $-1$ 的 $11\dots 1111$ 和表示 $1$ 的 $00\dots0001$ 相加如下，最高位的进位忽略不计<br>$$<br>\begin{align}<br>&amp;~11\dots 1111<br>\newline<br>&amp;\frac{00\dots 0001}{00\dots0000}<br>\end{align}<br>$$</p>
+<p>计算的结果正好为 $0$ ，满足了代数系统的封闭性。对于减法例如 $B-A$，可以转换成加法 $B+(-A)$ 进行计算，$-A$ 可以通过以下变换：<br>$$<br>\begin{align}<br>\because A+&amp;(-A)=0=1 + -1 \newline<br>\therefore -A&amp;=(-1-A)+1 \newline<br>&amp;=～A + 1<br>\end{align}<br>$$<br>通过变换可以得到一个数的负数就是按位取反后 $+1$ 就能得到，例如 $-1 ,~ 11\dots 111$, 取反后为 $00\dots 000$，即 $0 ，+ 1$ 后为 $+1$</p>
+<h2 id="2-5-Variab-length-Encodings"><a href="#2-5-Variab-length-Encodings" class="headerlink" title="2.5 Variab-length Encodings"></a>2.5 Variab-length Encodings</h2><p>编码的主要目标在于使用最高效的编码方式且能够将原信息完整表示，对于概率不同的信息，采取不同的编码长度：</p>
+<ul>
+<li>高概率事件 $\rightarrow$ 短编码</li>
+<li>低概率事件 $\rightarrow$ 长编码</li>
+</ul>
+<p>通过下面例子，说明对于不等概率的信息，不定长编码的期望值编码长度会更优</p>
+<table>
+<thead>
+<tr>
+<th align="center">$choice_i$</th>
+<th align="center">$p_i$</th>
+<th align="center">$encoding$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$”A”$</td>
+<td align="center">$1/3$</td>
+<td align="center">$11$</td>
+</tr>
+<tr>
+<td align="center">$”B”$</td>
+<td align="center">$1/2$</td>
+<td align="center">$0$</td>
+</tr>
+<tr>
+<td align="center">$”C”$</td>
+<td align="center">$1/12$</td>
+<td align="center">$100$</td>
+</tr>
+<tr>
+<td align="center">$”D”$</td>
+<td align="center">$1/12$</td>
+<td align="center">$101$</td>
+</tr>
+</tbody></table>
+<p>计算熵为<br>$$<br>\begin{align}<br>H(X) &amp;= (1/3)\cdot log_2(3) + (1/2)\cdot log_2(2) + (1/12)\cdot log_2(12) + (1/12) \cdot log_2(12)<br>\newline<br>&amp;=1.626~bits<br>\end{align}<br>$$<br>下面的是这种编码方式的二叉树可视化</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-var_leng_encoding" style="zoom:50%; align:center;" /></div>
+
+<p>这种编码方式的期望编码长度为：<br>$$<br>E(X) = (2)\cdot (1/3) + (1)\cdot (1/2) + (3)\cdot (1/12)(2) = 1.667 ~bits<br>$$<br>在对 $1000$ 个字符进行编码时，不同编码的期望长度对比：</p>
+<ul>
+<li>$2<del>bits</del>fixed$，需要 $2000~bits$</li>
+<li>$variable$，需要 $1667~bits$</li>
+<li>$Lower<del>bound$ ，$1626</del>bits$</li>
+</ul>
+<p>可以看出在此种编码情况下，期望值已经接近于理论值下界，比固长编码高效很多</p>
+<h2 id="2-6-Huffman"><a href="#2-6-Huffman" class="headerlink" title="2.6 Huffman"></a>2.6 Huffman</h2><p>$huffman$ 编码是一种最优化编码长度期望值的构造算法，其中每个叶子结点是待编码的 $symbol$，构造流程如下：</p>
+<ul>
+<li>首先将概率最低的两个节点合并为一颗子树，根的概率是两个节点的概率和，将此两个节点在待编码集合中用根替换</li>
+<li>不断的将概率最低的两个节点合并为一个子树</li>
+<li>最后只剩的是整颗树的根节点，编码完成</li>
+</ul>
+<p>下面是变长编码的例子通过 $huffman$ 编码的二叉树可视化：</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-huffman_tree" style="zoom:50%; align:center;" /></div>
+
+
+
+<p>$huffman$ 编码不唯一，每次合并时，概率最小的两个结点哪一个在左或在右，编码的期望长度相同</p>
+<p>在实际使用时，利用 $heap$ (堆) 这种数据结构自底向上可以在 $O(nlog_2n)$ 的时间复杂度内完成 $huffman$ 编码，下面是 $c++$  实现代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (heap.<span class="built_in">size</span>() != <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">double</span> a = heap.<span class="built_in">top</span>(); heap.<span class="built_in">pop</span>();</span><br><span class="line">  <span class="keyword">double</span> b = heap.<span class="built_in">top</span>(); heap.<span class="built_in">pop</span>();</span><br><span class="line">  <span class="keyword">double</span> c = a + b;</span><br><span class="line">  heap.<span class="built_in">push</span>(c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-6-most-file-compressed"><a href="#2-6-most-file-compressed" class="headerlink" title="2.6 most file compressed"></a>2.6 most file compressed</h2><p>对长的序列信息进行编码时，同时对多个 $symbol$ 的组合进行编码在期望上比对单个字符进行编码要高，同样对上例，考虑对两个字符的所有可能组合情况进行编码，一共有 4 种不同的 $symbol$ ，如下所示</p>
+<ul>
+<li>$\text{AA = 1/9，AB = 1/6，AC = 1/36，AD = 1/36}$</li>
+<li>$\text{BA = 1/6，BB = 1/4，BC = 1/24，BD = 1/24}$</li>
+<li>$\text{CA = 1/36，CB = 1/24，CC = 1/144，CD = 1/144}$</li>
+<li>$\text{DA = 1/36，DB = 1/24，DC = 1/144，DD = 1/144}$</li>
+</ul>
+<p>再使用 $huffman$ 对于每对 $symbol$ 进行编码，得到单个 $symbol$  的期望长度为<br>$$<br>E(\text{single symbol}) =1.646 ~ \text{bits}<br>$$<br>得到的期望结果要略优于对于单个 $symbol$ 进行编码的期望值 $1.667 ~\text{bits}$, 当对 $3$ 个 $symbol$ 组合进行编码时，期望值更优</p>
+<p>$modern<del>file</del>compression$ 算法通过自适应算法找到经常出现的序列并按照频率越高编码长度越短，这样可以显著提升效率</p>
+<h2 id="2-7-LZW"><a href="#2-7-LZW" class="headerlink" title="2.7 LZW"></a>2.7 LZW</h2><h3 id="2-7-1-encode"><a href="#2-7-1-encode" class="headerlink" title="2.7.1 encode"></a>2.7.1 encode</h3><p>相比较于 $huffman$ 构造算法，$LZW$ 主要是使用映射的思想，将所有的字符或序列映射成对应的编码，对于字符串 $”ABABAB”$，因为 $”AB”$ 重复出现，所以可将 $”AB”$ 编码为单个字符 $2$，对应 $”A”$ 为 $0$，$”B”$ 为 $2$</p>
+<p>$P(Previous)$ 代表此前读入的字符，$C(Current)$ 代表当前读入的字符，编码过程如下：</p>
+<ol>
+<li>字典只有默认项，$P$，$C$ 为空，默认项 $0\rarr a$, $1\rightarrow b$, $2\rarr c$</li>
+<li>读入新字符 $C$，与 $P$ 合并成 $P + C$</li>
+<li>在字典中查找 $P + C$，如果：<ul>
+<li>$P + C$ 在字典中，$P = P + C$</li>
+<li>$P + C$ 不在字典中，输出 $P$ 的编码，在字典为 $P + C$ 创建编码映射，$P = C$</li>
+</ul>
+</li>
+<li>重复 $2$ 直至读取完所有字符</li>
+</ol>
+<p>例如对于字符串 $”ababcababac”$ 的编码过程如下</p>
+<table>
+<thead>
+<tr>
+<th>$Step$</th>
+<th>$P$</th>
+<th>$C$</th>
+<th>$P + C$</th>
+<th>$P + C<del>in</del>Dict ?$</th>
+<th>$Action$</th>
+<th>$Output$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$1$</td>
+<td>$-$</td>
+<td>$a$</td>
+<td>$a$</td>
+<td>$True$</td>
+<td>$P = a$</td>
+<td>$-$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$a$</td>
+<td>$b$</td>
+<td>$ab$</td>
+<td>$False$</td>
+<td>$add~3 \rarr ab, P=b$</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>$b$</td>
+<td>$a$</td>
+<td>$ba$</td>
+<td>$False$</td>
+<td>$add~4 \rarr ab, P=b$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$4$</td>
+<td>$a$</td>
+<td>$b$</td>
+<td>$ab$</td>
+<td>$True$</td>
+<td>$p = ab$</td>
+<td>$-$</td>
+</tr>
+<tr>
+<td>$5$</td>
+<td>$ab$</td>
+<td>$c$</td>
+<td>$abc$</td>
+<td>$False$</td>
+<td>$add~5 \rarr abc, P=c$</td>
+<td>$3$</td>
+</tr>
+<tr>
+<td>$6$</td>
+<td>$c$</td>
+<td>$a$</td>
+<td>$ca$</td>
+<td>$False$</td>
+<td>$add~6\rarr ca, P=a$</td>
+<td>$2$</td>
+</tr>
+<tr>
+<td>$7$</td>
+<td>$a$</td>
+<td>$b$</td>
+<td>$ab$</td>
+<td>$True$</td>
+<td>$P=ab$</td>
+<td>$-$</td>
+</tr>
+<tr>
+<td>$8$</td>
+<td>$ab$</td>
+<td>$a$</td>
+<td>$aba$</td>
+<td>$False$</td>
+<td>$add~7 \rarr aba, P=a$</td>
+<td>$3$</td>
+</tr>
+<tr>
+<td>$9$</td>
+<td>$a$</td>
+<td>$b$</td>
+<td>$ab$</td>
+<td>$True$</td>
+<td>$P=ab$</td>
+<td>$-$</td>
+</tr>
+<tr>
+<td>$10$</td>
+<td>$ab$</td>
+<td>$a$</td>
+<td>$aba$</td>
+<td>$True$</td>
+<td>$P=aba$</td>
+<td>$-$</td>
+</tr>
+<tr>
+<td>$11$</td>
+<td>$aba$</td>
+<td>$c$</td>
+<td>$abac$</td>
+<td>$False$</td>
+<td>$add~8 \rarr abac, P=c$</td>
+<td>$7$</td>
+</tr>
+<tr>
+<td>$12$</td>
+<td>$c$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>$-$</td>
+<td>$2$</td>
+</tr>
+</tbody></table>
+<p>最后对字符编码的结果是 $0132372$，完整的字典为</p>
+<table>
+<thead>
+<tr>
+<th>$Symbol$</th>
+<th>$String$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0$</td>
+<td>$a$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$b$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$c$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>$ab$</td>
+</tr>
+<tr>
+<td>$4$</td>
+<td>$ba$</td>
+</tr>
+<tr>
+<td>$5$</td>
+<td>$abc$</td>
+</tr>
+<tr>
+<td>$6$</td>
+<td>$ca$</td>
+</tr>
+<tr>
+<td>$7$</td>
+<td>$aba$</td>
+</tr>
+<tr>
+<td>$8$</td>
+<td>$abac$</td>
+</tr>
+</tbody></table>
+<h3 id="2-7-2-decode"><a href="#2-7-2-decode" class="headerlink" title="2.7.2 decode"></a>2.7.2 decode</h3><p>解码需要还原出编码字典，解码器的输入是压缩后的编码序列，即 $Symbol<del>Stream$，主要是通过推理编码过程来获得当前的编码前原始信息，类似于编码，维护 $PW (previous</del>word)$ 和。$CW (current~word)$，算法流程如下：</p>
+<ol>
+<li>初始字典只有所有的默认项，例如 $0\rarr a$, $1\rightarrow b$, $2\rarr c$，$PW,CW$ 为空</li>
+<li>读入第一个字符 $CW$，解码输出，第一个只有一个字符，直接解码</li>
+<li>$PW = CW$</li>
+<li>读入下一个 $CW$</li>
+<li>在字典查找 $CW$<ul>
+<li>$CW$ 在字典中<ul>
+<li>解码 $CW$，输出 $Str(CW)$</li>
+<li>$P = Str(PW), C=Str(CW的第一个字符)$</li>
+<li>为 $P + C$ 添加新映射</li>
+</ul>
+</li>
+<li>$CW$ 不在字典<ul>
+<li>$P = Str(PW), C=Str(PW的第一个字符)$</li>
+<li>为 $P + C$ 添加新映射，这个新映射一定是不在字典的 $CW$</li>
+<li>输出 $P + C$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>返回 $3$ ，直到处理完所有字符</li>
+</ol>
+<p>给定初始的基本字符字典：</p>
+<table>
+<thead>
+<tr>
+<th>$Symbol$</th>
+<th>$String$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0$</td>
+<td>$a$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$b$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$c$</td>
+</tr>
+</tbody></table>
+<p>对于序列 $0132372$ 即 $”ababcababac”$ 进行解码过程如下：</p>
+<table>
+<thead>
+<tr>
+<th>$Step$</th>
+<th>$PW$</th>
+<th>$CW$</th>
+<th>$CW<del>in</del>Dict?$</th>
+<th>$Action$</th>
+<th>$Output$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$1$</td>
+<td>$-$</td>
+<td>$0$</td>
+<td>$True$</td>
+<td>$only~output$</td>
+<td>$a$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$0$</td>
+<td>$1$</td>
+<td>$True$</td>
+<td>$P=a, C=b, P+C=ab, add~3 \rarr ab$</td>
+<td>$b$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>$1$</td>
+<td>$3$</td>
+<td>$True$</td>
+<td>$P=b, C=a, P+C=ba, add~4 \rarr ba$</td>
+<td>$ab$</td>
+</tr>
+<tr>
+<td>$4$</td>
+<td>$3$</td>
+<td>$2$</td>
+<td>$True$</td>
+<td>$P=ab, C=c, P+C=abc, add~5 \rarr abc$</td>
+<td>$c$</td>
+</tr>
+<tr>
+<td>$5$</td>
+<td>$2$</td>
+<td>$3$</td>
+<td>$True$</td>
+<td>$P=c, C=a, P+C=ca, add~6\rarr ca$</td>
+<td>$ab$</td>
+</tr>
+<tr>
+<td>$6$</td>
+<td>$3$</td>
+<td>$7$</td>
+<td>$False$</td>
+<td>$P=ab, C=a, P+C=aba, add~7 \rarr aba$</td>
+<td>$aba$</td>
+</tr>
+<tr>
+<td>$7$</td>
+<td>$7$</td>
+<td>$2$</td>
+<td>$True$</td>
+<td>$P=aba, C=c, P+C=abac, add~8\rarr abac$</td>
+<td>$c$</td>
+</tr>
+</tbody></table>
+<p>在 $Step~6$ 中，字典并不存在当前字符，根据编码过程推断当前不存在的新字符是上一个信息加上其第一个字符组成，所以推断出当前的信息为 $”aba”$。可以看出在解码过程完全是依赖于所有的单个字符是初始默认编码情况下不断推出的。</p>
+<h1 id="4-Error-Detection"><a href="#4-Error-Detection" class="headerlink" title="4 Error Detection"></a>4 Error Detection</h1><h2 id="4-1-Single-bit-error"><a href="#4-1-Single-bit-error" class="headerlink" title="4.1 Single bit error"></a>4.1 Single bit error</h2><p>假如我们想要可靠的对抛硬币的结果进行传递，结果只有正反两种，用 $1$ 表示正面，$0$ 表示反面，那么对于这样简单的编码如果在传输中发生错误原来传输的 $0\rarr 1$ 或 $1\rarr 0$，信息的接受者不能够识别出当前的信息传递发生错误。</p>
+<p>$hamming~distance$ 指的是相同长度的两个信息有多少位的编码不同，例如下图</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-hamming_distance" style="zoom:50%;" /></div>
+
+<ul>
+<li>共有 $2<del>bits$ 的二进制数不同，所以 $hamming</del>distance$ 为 $2$</li>
+</ul>
+<p>直觉上来看如果编码出现一位错误后产生的编码不是有效编码，则可以避免单 $bit$ 发生错误所造成的混淆问题</p>
+<p>我们希望的是两个有效编码的 $hamming~distance$ 至少为 $2$， 通过在 $1$ 位的编码后添加奇偶校验码可以方便解决，如下所示</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-single_bit_error" style="zoom:40%;" /></div>
+
+<ul>
+<li>所有位的 $1$ 个数和为偶数即偶校验码</li>
+</ul>
+<p>如图中所示，在这种情况下由单个 $bit$ 产生的错误编码是无效编码，可以有效的进行识别。这样编码的 $hamming~distance$ 由 $1$ 变为了 $2$</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-parity_check" style="zoom:40%;" /></div>
+
+<p>如上图所示，奇偶校验码只能检验奇数个 $bits$ 错误，当发生了偶数个错误时奇偶性不变，所以无法检测</p>
+<p>在实现的时候通过 $xor$ 运算可以很方便的实现检验</p>
+<h2 id="4-2-Multi-bits-errors"><a href="#4-2-Multi-bits-errors" class="headerlink" title="4.2 Multi bits errors"></a>4.2 Multi bits errors</h2><p>$E<del>bit</del>error$ 需要至少 $E+1$ 的 $Hamming~Distance$ 才能够检验出</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-multi_errors" style="zoom:40%;" /></div>
+
+<p>如上图，假设有效编码只有 $”000”$, $”111”$，那么由 $2$ 位差错产生的错误编码都不是有效编码。 </p>
+<h1 id="5-Error-correction"><a href="#5-Error-correction" class="headerlink" title="5 Error correction"></a>5 Error correction</h1><p>为了检测出 $E<del>bits$ 的错误并修正，需要有效编码之间的 $Hamming</del>distance$ 为 $2E+1$，例如，需要能够修正 $1<del>bits$ 的错误，那么需要有效编码之间的 $Hamming</del>distance$ 是 $3$，对于硬币投掷结果的编码如下：</p>
+<div align=center><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/6.004-L1-single_bit_correct" style="zoom:40%;" /></div>
+
+<p>那么无论是 $”000”$ 还是 $”111”$ 因 $1$ 位差错产生的错误都能检测到，并且推理出正确编码。</p>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Computation-Stucture/">Computation Stucture</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=61561b8846199d0019177889&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/%E6%94%AF%E4%BB%98%E5%AE%9D.JPG" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/hhyxx/Image-Hosting/main/blog-img/%E5%BE%AE%E4%BF%A1%E8%B5%9E%E8%B5%8F%E7%A0%81.JPG" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/06/28/first-post/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">first-post</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/04/29/Language/Go/fmt/"><span class="level-item">fmt</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "3a1a6c409d4fece904ed646940f73f3a",
+            repo: "hhyxx.github.io",
+            owner: "hhyxx",
+            clientID: "75c6a5d8d3db17be431b",
+            clientSecret: "dab1e8a87580588a26998d0adb5a01da5956dea4",
+            admin: ["hhyxx"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#1-Information-resolves-uncertainty"><span class="level-left"><span class="level-item">1 Information resolves uncertainty</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-1-Quantifying-information"><span class="level-left"><span class="level-item">1.1 Quantifying information</span></span></a></li><li><a class="level is-mobile" href="#1-2-Entropy"><span class="level-left"><span class="level-item">1.2 Entropy</span></span></a></li></ul></li><li><a class="level is-mobile" href="#2-Encodings"><span class="level-left"><span class="level-item">2 Encodings</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-1-Conflict"><span class="level-left"><span class="level-item">2.1 Conflict</span></span></a></li><li><a class="level is-mobile" href="#2-2-Encoding-as-binary-trees"><span class="level-left"><span class="level-item">2.2 Encoding as binary trees</span></span></a></li><li><a class="level is-mobile" href="#2-3-fixed-length-encodes"><span class="level-left"><span class="level-item">2.3 fixed length encodes</span></span></a></li><li><a class="level is-mobile" href="#2-4-Encode-for-different-radix"><span class="level-left"><span class="level-item">2.4 Encode for different radix</span></span></a></li><li><a class="level is-mobile" href="#2-5-Variab-length-Encodings"><span class="level-left"><span class="level-item">2.5 Variab-length Encodings</span></span></a></li><li><a class="level is-mobile" href="#2-6-Huffman"><span class="level-left"><span class="level-item">2.6 Huffman</span></span></a></li><li><a class="level is-mobile" href="#2-6-most-file-compressed"><span class="level-left"><span class="level-item">2.6 most file compressed</span></span></a></li><li><a class="level is-mobile" href="#2-7-LZW"><span class="level-left"><span class="level-item">2.7 LZW</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-7-1-encode"><span class="level-left"><span class="level-item">2.7.1 encode</span></span></a></li><li><a class="level is-mobile" href="#2-7-2-decode"><span class="level-left"><span class="level-item">2.7.2 decode</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#4-Error-Detection"><span class="level-left"><span class="level-item">4 Error Detection</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#4-1-Single-bit-error"><span class="level-left"><span class="level-item">4.1 Single bit error</span></span></a></li><li><a class="level is-mobile" href="#4-2-Multi-bits-errors"><span class="level-left"><span class="level-item">4.2 Multi bits errors</span></span></a></li></ul></li><li><a class="level is-mobile" href="#5-Error-correction"><span class="level-left"><span class="level-item">5 Error correction</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hyx&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Hou. Yuxuan</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/hhyxx"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
