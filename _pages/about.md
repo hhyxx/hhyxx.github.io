@@ -1,5 +1,5 @@
 ---
-layout: about
+layout: About
 permalink: /
 title: <strong>Mayank</strong> Mittal
 description: Graduate Student | ETH Zurich | NVIDIA
